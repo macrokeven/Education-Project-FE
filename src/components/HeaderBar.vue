@@ -1,7 +1,7 @@
 <template>
   <div class="head-container">
     <img src="./../assets/icons/logo-white-bg.png" alt="" class="head-logo" />
-    <div class="head-title">乐炬智能办公</div>
+    <div class="head-title">乐炬智能教育</div>
     <el-dropdown trigger="click" style="margin-left: auto;margin-right: 20px;">
       <div class="head-img-box">
         <img src="./../assets/icons/setting.svg" alt="">

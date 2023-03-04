@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="l-container">
     <div class="card blue">
       <div class="l-row l-center" style="height: 100%;justify-content: flex-start">
         <div class="block-name l-center">
@@ -42,18 +42,22 @@
       </div>
     </div>
 
-    <audio src="./../assets/time-tip.mp3" id="eventAudio"></audio>
+    clientWidth:{{clientWidth}}
+    offsetHeight:{{offsetHeight}}
+    scrollHeight:{{scrollHeight}}
+    scrollTop:{{scrollTop}}
   </div>
 
 </template>
 
-<script>
+<script lang="ts">
 import LetoyService from "@/utils/LetoyService";
 
-import {ElMessage, ElIcon, ElMessageBox, ElDialog, ElButton, ElSelect, ElOption} from 'element-plus'
+import { ElIcon, ElMessageBox, ElDialog, ElButton, ElSelect, ElOption} from 'element-plus'
 import {Document, Trophy, Suitcase} from '@element-plus/icons-vue'
+import {Options, Vue} from "vue-class-component";
 
-export default {
+@Options({
   data() {
     return {}
   },
@@ -62,7 +66,6 @@ export default {
     ElButton,
     ElSelect,
     ElOption,
-    ElMessage,
     ElIcon,
     Document,
     Trophy,
@@ -71,8 +74,26 @@ export default {
   mounted() {
 
   },
-  methods: {}
-}
+  methods: {
 
+  },
+  computed:{
+    clientWidth(){
+      return document.body.clientWidth
+    },
+    offsetHeight(){
+      return document.body.offsetHeight
+    },
+    scrollHeight(){
+      return document.body.scrollHeight
+    },
+    scrollTop(){
+      return document.body.scrollTop
+    },
+
+  }
+})
+export default class HomePage extends Vue {
+}
 </script>
 <style scoped src="./../assets/css/HomePage.css"></style>
