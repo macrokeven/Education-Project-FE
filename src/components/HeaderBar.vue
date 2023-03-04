@@ -1,12 +1,7 @@
 <template>
   <div class="head-container">
-<<<<<<< HEAD
     <img src="./../assets/icons/logo-white-bg.png" alt="" class="head-logo" />
     <div class="head-title">乐炬智能办公</div>
-=======
-    <img src="./../assets/icons/logo.jpg" alt="" class="head-logo" />
-    <div class="head-title">喵酷家电玩管理系统</div>
->>>>>>> 98ff2c5984f51d25483fcda57216f5cde5efb620
     <el-dropdown trigger="click" style="margin-left: auto;margin-right: 20px;">
       <div class="head-img-box">
         <img src="./../assets/icons/setting.svg" alt="">

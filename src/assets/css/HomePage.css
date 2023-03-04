@@ -7,7 +7,6 @@
     box-shadow: 4px 4px 8px rgba(234, 234, 234, 0.3);
     background: #ffffff;
 }
-<<<<<<< HEAD
 .card:first-child{
     margin-top: 10px;
 }
@@ -19,97 +18,9 @@
     width: 60px;
     font-size: 30px;
     margin-left: 20px;
-=======
-
-.card > .l-row > .title {
-    font-size: 19px;
-    font-weight: 600;
-    margin: 8px 8px 0 8px;
-}
-
-.card > .l-row > .title-attr {
-    font-size: 16px;
-    font-weight: 300;
-    margin: 0 8px 0 auto;
-    color: #00b0ff;
-}
-
-.card > .l-row > .describe {
-    font-size: 20px;
-    font-weight: 600;
-    margin: 0 8px 0 8px;
-}
-
-.input-time-text {
-    font-size: 30px;
-    color: #000000;
-}
-
-.input-time {
-    width: 160px;
-    background: #ffffff;
-    height: 40px;
-    line-height: 40px;
-    font-size: 50px;
-    outline: none;
-    border-radius: 5px;
-    /*border: 2px solid #dcdcdc;*/
-    text-align: center;
-    margin: 0 10px;
-    /*letter-spacing: 2px;*/
-}
-
-.timer-button {
-    cursor: pointer;
-    width: 95px;
-    height: 40px;
-    border-radius: 5px;
-    margin: 20px 5px 20px 5px;
-    line-height: 40px;
-    font-size: 20px;
-    background: #00b0ff;
-    color: #efefef;
-    text-align: center;
-}
-
-.less-container {
-    display: flex;
-    width: calc(100% - 40px);
-    flex-wrap: wrap;
-    justify-content: flex-start;
-}
-
-
-
-.timer-button:active {
-    background: #00a1da;
-}
-
-.stop {
-    background: #FF5C5C;
-}
-
-.stop:active {
-    background: #de5050;
-}
-
-.restart {
-    background: rgb(0, 151, 167);
-}
-
-.restart:active {
-    background: rgb(0, 103, 117);
-}
-
-.del-icon-box {
-    margin: 0 10px;
-    width: 30px;
-    height: 30px;
->>>>>>> 98ff2c5984f51d25483fcda57216f5cde5efb620
     display: flex;
 }
 
-<<<<<<< HEAD
 .card-title {
     font-size: 25px;
     color: #ffffff;
@@ -140,22 +51,3 @@
 .red2 {
     background: #f89898;
 }
-=======
-.del-icon-box img {
-    width: 25px;
-    height: 25px;
-    cursor: pointer;
-}
-
-@media (min-width: 600px) {
-    .card {
-        max-width: 350px;
-    }
-    .less-container:after {
-        content: "";
-        width: 350px;
-    }
-
-}
-
->>>>>>> 98ff2c5984f51d25483fcda57216f5cde5efb620

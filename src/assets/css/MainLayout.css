@@ -24,7 +24,6 @@
     width: calc(100% - 230px);
     display: flex;
     flex-direction: column;
-<<<<<<< HEAD
 }
 
 .l-menu {
@@ -34,8 +33,4 @@
     height: calc(100vh - 60px);
     background: #ffffff;
     overflow-y: scroll;
-=======
-    margin-top: 52px;
-    margin-bottom: 60px;
->>>>>>> 98ff2c5984f51d25483fcda57216f5cde5efb620
 }

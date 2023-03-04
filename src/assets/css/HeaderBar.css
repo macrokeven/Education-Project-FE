@@ -1,13 +1,8 @@
 .head-container{
     z-index: 300;
     align-items: center;
-<<<<<<< HEAD
     height: 60px;
     background: #337ecc;
-=======
-    height: 52px;
-    background: #008dcb;
->>>>>>> 98ff2c5984f51d25483fcda57216f5cde5efb620
     position: fixed;
     top: 0;
     width: 100%;

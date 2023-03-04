@@ -11,12 +11,8 @@
     "development": "vue-cli-service build --mode development"
   },
   "dependencies": {
-<<<<<<< HEAD
-    "@element-plus/icons-vue": "^2.0.10",
-=======
     "@element-plus/icons-vue": "^2.0.9",
     "@stomp/stompjs": "^6.1.2",
->>>>>>> 98ff2c5984f51d25483fcda57216f5cde5efb620
     "@types/js-md5": "^0.4.3",
     "axios": "^1.3.4",
     "core-js": "^3.8.3",
