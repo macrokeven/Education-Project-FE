@@ -55,7 +55,6 @@
           </el-table-column>
           <el-table-column label="當前平均成績" width="140" :sortable="true" :sort-by="'score'" align="center">
             <template #default="scope">
-
               <el-tag v-if="scope.row.score > 9">{{ scope.row.score }}</el-tag>
               <el-tag v-if="(scope.row.score >= 8)&&(scope.row.score < 9)" type="success">
                 {{ scope.row.score }}
@@ -83,6 +82,59 @@
 
     </div>
   </div>
+
+
+  <t-dialog placement="center" header="修改學生信息"
+            :visible="editStudentDialogVisible"
+            :cancel-btn="null"
+            :confirm-btn="null"
+  >
+
+    <template #footer></template>
+
+    <div class="l-container">
+
+        <t-form-item label="姓名" name="name">
+          <t-input v-model="formData.name" placeholder="请输入内容" @enter="onEnter"></t-input>
+        </t-form-item>
+
+        <t-form-item label="手机号码" name="tel">
+          <t-input v-model="formData.tel" placeholder="请输入内容" @enter="onEnter"></t-input>
+        </t-form-item>
+
+        <t-form-item label="接收短信" name="status">
+          <t-switch v-model="formData.status"></t-switch>
+        </t-form-item>
+
+        <t-form-item label="性别" name="gender">
+          <t-radio-group v-model="formData.gender">
+            <t-radio value="1">男</t-radio>
+            <t-radio value="2">女</t-radio>
+          </t-radio-group>
+        </t-form-item>
+
+        <t-form-item label="课程" name="course">
+          <t-checkbox-group v-model="formData.course" :options="courseOptions"></t-checkbox-group>
+        </t-form-item>
+
+        <t-form-item>
+          <t-space size="small">
+            <t-button theme="primary" type="submit">提交</t-button>
+            <t-button theme="default" variant="base" type="reset">重置</t-button>
+            <!-- 下方示例代码，有效，勿删 -->
+            <!--<t-button theme="default" @click="submitForm">实例方法提交</t-button>-->
+            <!--<t-button theme="default" variant="base" @click="resetForm">实例方法重置</t-button>-->
+            <!--<t-button theme="default" variant="base" @click="validateOnly">仅校验</t-button>-->
+          </t-space>
+        </t-form-item>
+
+      <div class="l-row" style="display: flex;justify-content: center">
+      </div>
+      <div class="l-row" style="display: flex;justify-content: center">
+        <div class="avatar-name">馬雨軒</div>
+      </div>
+    </div>
+  </t-dialog>
 
 </template>
 
@@ -171,7 +223,8 @@ import {Search} from "@element-plus/icons-vue";
           grade:1,
           studentClass:3
         }],
-      studentName:""
+      studentName:"",
+      editStudentDialogVisible:true
     }
   },
   components: {

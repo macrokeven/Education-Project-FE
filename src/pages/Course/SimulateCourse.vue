@@ -23,20 +23,21 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
+
   <t-dialog placement="center" header="" :visible="visibleOverflow"
             mode="full-screen"
             :closeBtn="false"
             :cancel-btn="null"
             :confirm-btn="null">
+
     <template #header>
       <div class="confirm-title">請問這是你嗎？</div>
     </template>
-    <template #footer>
 
-    </template>
+    <template #footer></template>
+
     <div class="l-container">
       <div class="l-row" style="display: flex;justify-content: center">
         <img src="./../../assets/pics/avatar/student-avatar.jpg" alt="" class="student-confirm-photo">
@@ -52,10 +53,9 @@
           <CloseIcon style="color: #ffffff" size="80px"  />
         </div>
       </div>
-
     </div>
-
   </t-dialog>
+
 </template>
 
 <script lang="ts">

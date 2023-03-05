@@ -1,9 +1,9 @@
 <template>
-  <img src="./../assets/pics/background.png" class="background pc" alt="">
+  <img src="./../assets/pics/background.jpg" class="background pc" alt="">
   <img src="./../assets/pics/phone-bg-2.jpg" class="background mobile" alt="">
   <div class="my-container">
     <div class="login-box" ref="myLoginBox">
-      <div class="login-header">喵酷家电玩管理系统</div>
+      <div class="login-header">澳門教育系統</div>
       <div class="username-box" style="margin-top: 40px;">
         <input type="text" placeholder="用户名、邮箱、手机号" class="login-input" v-model="userInput">
       </div>
@@ -68,13 +68,17 @@ import md5 from "js-md5";
                 type: 'error',
               })
             }
-          }).catch(() => {
+          })
+          .catch(() => {
+            this.loadingInstance.close();
+            this.$ElTip({
+              title: '错误',
+              message: '用户名密码错误',
+              type: 'error',
+            })
+          })
+          .finally(() => {
         this.loadingInstance.close();
-        this.$ElTip({
-          title: '错误',
-          message: '用户名密码错误',
-          type: 'error',
-        })
       })
     },
     checkInputType(value: string) {
