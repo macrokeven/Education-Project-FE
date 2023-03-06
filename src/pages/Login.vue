@@ -32,6 +32,7 @@ import MyRequest from "@/utils/LetoyService";
 import 'element-plus/es/components/loading/style/css'
 import {Options, Vue} from 'vue-class-component';
 import md5 from "js-md5";
+import {MessagePlugin} from "tdesign-vue-next";
 
 @Options({
   data() {
@@ -45,42 +46,42 @@ import md5 from "js-md5";
     ElLoading
   },
   methods: {
-    login() {
-      this.showLoading();
-      let loginMethod = this.checkInputType(this.userInput);
-      MyRequest.noAuthRequest(
-          "/login",
-          {}, {username: this.userInput, password: md5(this.password), loginMethod})
-          .then((response: any) => {
-            if (response.status === 0) {
-              sessionStorage.setItem('systemToken', response.token);
-              this.$router.push("homePage")
-              this.$ElTip({
-                title: '登录成功',
-                message: '欢迎使用喵酷家电玩管理系统！',
-                type: 'success',
-              });
-              this.loadingInstance.close();
-            } else {
-              this.$ElTip({
-                title: '错误',
-                message: '用户名密码错误',
-                type: 'error',
-              })
-            }
-          })
-          .catch(() => {
-            this.loadingInstance.close();
-            this.$ElTip({
-              title: '错误',
-              message: '用户名密码错误',
-              type: 'error',
-            })
-          })
-          .finally(() => {
-        this.loadingInstance.close();
-      })
-    },
+    // login() {
+    //   this.showLoading();
+    //   let loginMethod = this.checkInputType(this.userInput);
+    //   MyRequest.noAuthRequest(
+    //       "/login",
+    //       {}, {username: this.userInput, password: md5(this.password), loginMethod})
+    //       .then((response: any) => {
+    //         if (response.status === 0) {
+    //           sessionStorage.setItem('systemToken', response.token);
+    //           this.$router.push("homePage")
+    //           this.$ElTip({
+    //             title: '登录成功',
+    //             message: '欢迎使用喵酷家电玩管理系统！',
+    //             type: 'success',
+    //           });
+    //           this.loadingInstance.close();
+    //         } else {
+    //           this.$ElTip({
+    //             title: '错误',
+    //             message: '用户名密码错误',
+    //             type: 'error',
+    //           })
+    //         }
+    //       })
+    //       .catch(() => {
+    //         this.loadingInstance.close();
+    //         this.$ElTip({
+    //           title: '错误',
+    //           message: '用户名密码错误',
+    //           type: 'error',
+    //         })
+    //       })
+    //       .finally(() => {
+    //     this.loadingInstance.close();
+    //   })
+    // },
     checkInputType(value: string) {
       let phoneRegExp = new RegExp("^1[3578]\\d{9}$");
       let emailRegExp = new RegExp(/^\w+@[a-z0-9]+\.[a-z]+$/i);
@@ -93,13 +94,14 @@ import md5 from "js-md5";
       }
     },
 
-    // login() {
-    //   this.showLoading();
-    //   setTimeout(()=>{
-    //     this.loadingInstance.close();
-    //     this.$LTTips.createLTTips({label: "登陆成功！", type: 'success', duration: 1500, top: false,showCover:false})
-    //   },2000)
-    // },
+    login() {
+      this.showLoading();
+      setTimeout(()=>{
+        this.loadingInstance.close();
+        MessagePlugin.success('登陸成功！');
+        this.$router.push("Home");
+      },2000)
+    },
     showLoading() {
       let options = {
         target: this.$refs.myLoginBox

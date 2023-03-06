@@ -8,7 +8,7 @@
       :value="selectPath"
       @onChange="changePath"
   >
-    <t-menu-item value="Home" @click="changePath('Home.vue')">
+    <t-menu-item value="Home" @click="changePath('Home')">
       <template #icon>
         <t-icon name="app"/>
       </template>
@@ -32,9 +32,20 @@
       <template #title>
         <span>课程中心</span>
       </template>
-      <t-menu-item value="SimulateCourse" @click="changePath('SimulateCourse')"> 模擬上課</t-menu-item>
-      <t-menu-item value="4-2"> 二级菜单内容</t-menu-item>
+      <t-menu-item value="SimulateCourse" @click="changePath('SimulateCourse')">課程管理</t-menu-item>
+      <t-menu-item value="4-2">課程報告</t-menu-item>
       <t-menu-item value="4-3"> 二级菜单内容</t-menu-item>
+    </t-submenu>
+    <t-submenu value="5">
+      <template #icon>
+        <t-icon name="view-module"/>
+      </template>
+      <template #title>
+        <span>模擬上課</span>
+      </template>
+      <t-menu-item value="SimulateCourse" @click="changePath('SimulateCourse')">學生進課</t-menu-item>
+      <t-menu-item value="CurrentCourseManage" @click="changePath('CurrentCourseManage')">實時課程管理</t-menu-item>
+      <t-menu-item value="CurrentCourseDetail" @click="changePath('CurrentCourseDetail')">實時課程詳情</t-menu-item>
     </t-submenu>
     <t-menu-item value="edit1">
       <template #icon>
@@ -48,20 +59,20 @@
 <script lang="ts">
 import {Options, Vue} from 'vue-class-component';
 import {Icon as tIcon} from 'tdesign-icons-vue-next';
-import { MenuValue } from 'tdesign-vue-next';
+import {MenuValue} from 'tdesign-vue-next';
 
 @Options({
   components: {
     tIcon
   },
   computed: {
-    currentPath(){
-      return this.$route.path.replace("/","");
+    currentPath() {
+      return this.$route.path.replace("/", "");
     }
   },
   props: {},
   methods: {
-    changePath(path: string){
+    changePath(path: string) {
       this.selectPath = path;
       this.$router.push(path)
     }
@@ -69,7 +80,7 @@ import { MenuValue } from 'tdesign-vue-next';
   data() {
     return {
       expanded: [],
-      selectPath:""
+      selectPath: ""
     }
   }
 })

@@ -40,6 +40,18 @@ const routes: Array<RouteRecordRaw> = [
         name: "模擬上課",
         component: () =>
             import(/* webpackChunkName: "HomePage" */ "../pages/Course/SimulateCourse.vue"),
+      },
+      {
+        path: "/CurrentCourseManage",
+        name: "進行中的課程",
+        component: () =>
+            import(/* webpackChunkName: "HomePage" */ "../pages/Course/CurrentCourseManage.vue"),
+      },
+      {
+        path: "/CurrentCourseDetail",
+        name: "進行課程實況",
+        component: () =>
+            import(/* webpackChunkName: "HomePage" */ "../pages/Course/CurrentCourseDetail.vue"),
       }
     ]
   },

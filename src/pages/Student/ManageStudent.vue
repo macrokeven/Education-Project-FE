@@ -31,7 +31,7 @@
         </el-select>
       </div>
       <div class="l-row">
-        <el-table :data="tableData" style="width: calc( 100% - 40px );margin: 0 20px" :border="true">
+        <el-table :data="tableData" style="width: calc( 100% - 40px );margin: 10px 20px" :border="true">
           <el-table-column label="學生姓名" width="100" align="center">
             <template #default="scope">
               <el-tag>{{ scope.row.name }}</el-tag>
@@ -90,12 +90,26 @@
       :visible="editStudentDialogVisible"
       :cancel-btn="null"
       :confirm-btn="null"
-      :on-close="close1"
+      :close-btn="false"
   >
 
     <template #footer></template>
 
     <div class="l-container">
+      <div class="l-row l-center" style="margin: 0 0 20px 0 ">
+        <t-upload
+            ref="uploadRef1"
+            v-model="studentAvatar"
+            action="https://service-bv448zsw-1257786608.gz.apigw.tencentcs.com/api/upload-demo"
+            theme="image"
+            accept="image/*"
+            :locale="{
+          triggerUploadText: {
+            image: '请选择图片',
+          },
+        }"
+        ></t-upload>
+      </div>
       <table class="form-table">
         <tr>
           <td>學生姓名：</td>
@@ -134,35 +148,15 @@
             </t-radio-group>
           </td>
         </tr>
-        <!--        <tr>-->
-        <!--          <td>科目：</td>-->
-        <!--          <td>-->
-        <!--            <t-checkbox-group v-model="editForm.studentClass">-->
-        <!--              <t-checkbox :value="1">语文</t-checkbox>-->
-        <!--              <t-checkbox :value="2">数学</t-checkbox>-->
-        <!--              <t-checkbox :value="3">英语</t-checkbox>-->
-        <!--              <t-checkbox :value="4">体育</t-checkbox>-->
-        <!--            </t-checkbox-group>-->
-        <!--          </td>-->
-        <!--        </tr>-->
       </table>
 
 
       <t-space size="small">
-        <t-button theme="primary" type="submit">提交</t-button>
-        <t-button theme="default" variant="base" type="reset">重置</t-button>
-        <!-- 下方示例代码，有效，勿删 -->
-        <!--<t-button theme="default" @click="submitForm">实例方法提交</t-button>-->
-        <!--<t-button theme="default" variant="base" @click="resetForm">实例方法重置</t-button>-->
-        <!--<t-button theme="default" variant="base" @click="validateOnly">仅校验</t-button>-->
+        <t-button theme="primary" type="submit">保存</t-button>
+        <t-button theme="default" variant="base" type="reset" @click="editStudentDialogVisible = false">取消</t-button>
       </t-space>
 
 
-      <div class="l-row" style="display: flex;justify-content: center">
-      </div>
-      <div class="l-row" style="display: flex;justify-content: center">
-        <div class="avatar-name">馬雨軒</div>
-      </div>
     </div>
   </t-dialog>
 
@@ -201,6 +195,16 @@ import {Search} from "@element-plus/icons-vue";
   },
   data() {
     return {
+      studentAvatar: [{
+        "raw": "",
+        "lastModified": 1677955348445,
+        "size": 937477,
+        "type": "image/png",
+        "percent": 100,
+        "status": "success",
+        "uploadTime": "2023-03-7",
+        "url": require("@/assets/pics/avatar/student-avatar.jpg")
+      }],
       editForm: {
         name: 'Marry',
         address: 'No. 189, Grove St, Los Angeles',
@@ -278,7 +282,7 @@ import {Search} from "@element-plus/icons-vue";
     ElOption,
   },
   methods: {
-    close1(){
+    close1() {
       console.log("w")
     }
   },
