@@ -17,17 +17,17 @@
       </div>
       <div class="card-l-row">
         <el-select v-model="queryForm.grade" class="m-2" placeholder="Select">
-          <el-option label="全部年級" :value="0" />
-          <el-option label="一年級" :value="1" />
-          <el-option label="二年級" :value="2" />
-          <el-option label="三年級" :value="3" />
-          <el-option label="五年級" :value="4" />
+          <el-option label="全部年級" :value="0"/>
+          <el-option label="一年級" :value="1"/>
+          <el-option label="二年級" :value="2"/>
+          <el-option label="三年級" :value="3"/>
+          <el-option label="五年級" :value="4"/>
         </el-select>
         <el-select v-model="queryForm.studentClass" class="m-2" placeholder="Select" style="margin: 0 10px">
-          <el-option label="全部班級" :value="0" />
-          <el-option label="A班" :value="1" />
-          <el-option label="B班" :value="2" />
-          <el-option label="C班" :value="3" />
+          <el-option label="全部班級" :value="0"/>
+          <el-option label="A班" :value="1"/>
+          <el-option label="B班" :value="2"/>
+          <el-option label="C班" :value="3"/>
         </el-select>
       </div>
       <div class="l-row">
@@ -42,15 +42,15 @@
               <img src="./../../assets/pics/avatar/avatar-demo.png" class="table-user-avatar" alt="">
             </template>
           </el-table-column>
-          <el-table-column label="學號" prop="studentId" width="100"  align="center" :sortable="true"></el-table-column>
-          <el-table-column label="年級" prop="grade" width="100"  align="center" :sortable="true">
+          <el-table-column label="學號" prop="studentId" width="100" align="center" :sortable="true"></el-table-column>
+          <el-table-column label="年級" prop="grade" width="100" align="center" :sortable="true">
             <template #default="scope">
-              {{gradeList[scope.row.grade]}}
+              {{ gradeList[scope.row.grade] }}
             </template>
           </el-table-column>
-          <el-table-column label="班級" prop="studentClass" width="100"  align="center" :sortable="true">
+          <el-table-column label="班級" prop="studentClass" width="100" align="center" :sortable="true">
             <template #default="scope">
-              {{studentClassList[scope.row.studentClass]}}
+              {{ studentClassList[scope.row.studentClass] }}
             </template>
           </el-table-column>
           <el-table-column label="當前平均成績" width="140" :sortable="true" :sort-by="'score'" align="center">
@@ -73,6 +73,7 @@
           <el-table-column label="操作">
             <template #default="scope">
               <el-button size="small" type="primary"
+                         @click="editStudentDialogVisible=true"
               >编辑
               </el-button>
             </template>
@@ -84,49 +85,78 @@
   </div>
 
 
-  <t-dialog placement="center" header="修改學生信息"
-            :visible="editStudentDialogVisible"
-            :cancel-btn="null"
-            :confirm-btn="null"
+  <t-dialog
+      placement="center" header="修改學生信息"
+      :visible="editStudentDialogVisible"
+      :cancel-btn="null"
+      :confirm-btn="null"
+      :on-close="close1"
   >
 
     <template #footer></template>
 
     <div class="l-container">
+      <table class="form-table">
+        <tr>
+          <td>學生姓名：</td>
+          <td>
+            <t-input v-model="editForm.name" placeholder="请输入内容"></t-input>
+          </td>
+        </tr>
+        <tr>
+          <td>學號：</td>
+          <td>
+            <t-input v-model="editForm.studentId" placeholder="请输入内容"></t-input>
+          </td>
+        </tr>
+        <tr>
+          <td>年級：</td>
+          <td>
+            <t-switch v-model="editForm.grade"></t-switch>
+          </td>
+        </tr>
+        <tr>
+          <td>性別：</td>
+          <td>
+            <t-radio-group v-model="editForm.gender">
+              <t-radio value="1">男</t-radio>
+              <t-radio value="2">女</t-radio>
+            </t-radio-group>
+          </td>
+        </tr>
+        <tr>
+          <td>班級：</td>
+          <td>
+            <t-radio-group v-model="editForm.studentClass">
+              <t-radio value="1">A班</t-radio>
+              <t-radio value="2">B班</t-radio>
+              <t-radio value="3">C班</t-radio>
+            </t-radio-group>
+          </td>
+        </tr>
+        <!--        <tr>-->
+        <!--          <td>科目：</td>-->
+        <!--          <td>-->
+        <!--            <t-checkbox-group v-model="editForm.studentClass">-->
+        <!--              <t-checkbox :value="1">语文</t-checkbox>-->
+        <!--              <t-checkbox :value="2">数学</t-checkbox>-->
+        <!--              <t-checkbox :value="3">英语</t-checkbox>-->
+        <!--              <t-checkbox :value="4">体育</t-checkbox>-->
+        <!--            </t-checkbox-group>-->
+        <!--          </td>-->
+        <!--        </tr>-->
+      </table>
 
-        <t-form-item label="姓名" name="name">
-          <t-input v-model="formData.name" placeholder="请输入内容" @enter="onEnter"></t-input>
-        </t-form-item>
 
-        <t-form-item label="手机号码" name="tel">
-          <t-input v-model="formData.tel" placeholder="请输入内容" @enter="onEnter"></t-input>
-        </t-form-item>
+      <t-space size="small">
+        <t-button theme="primary" type="submit">提交</t-button>
+        <t-button theme="default" variant="base" type="reset">重置</t-button>
+        <!-- 下方示例代码，有效，勿删 -->
+        <!--<t-button theme="default" @click="submitForm">实例方法提交</t-button>-->
+        <!--<t-button theme="default" variant="base" @click="resetForm">实例方法重置</t-button>-->
+        <!--<t-button theme="default" variant="base" @click="validateOnly">仅校验</t-button>-->
+      </t-space>
 
-        <t-form-item label="接收短信" name="status">
-          <t-switch v-model="formData.status"></t-switch>
-        </t-form-item>
-
-        <t-form-item label="性别" name="gender">
-          <t-radio-group v-model="formData.gender">
-            <t-radio value="1">男</t-radio>
-            <t-radio value="2">女</t-radio>
-          </t-radio-group>
-        </t-form-item>
-
-        <t-form-item label="课程" name="course">
-          <t-checkbox-group v-model="formData.course" :options="courseOptions"></t-checkbox-group>
-        </t-form-item>
-
-        <t-form-item>
-          <t-space size="small">
-            <t-button theme="primary" type="submit">提交</t-button>
-            <t-button theme="default" variant="base" type="reset">重置</t-button>
-            <!-- 下方示例代码，有效，勿删 -->
-            <!--<t-button theme="default" @click="submitForm">实例方法提交</t-button>-->
-            <!--<t-button theme="default" variant="base" @click="resetForm">实例方法重置</t-button>-->
-            <!--<t-button theme="default" variant="base" @click="validateOnly">仅校验</t-button>-->
-          </t-space>
-        </t-form-item>
 
       <div class="l-row" style="display: flex;justify-content: center">
       </div>
@@ -171,20 +201,29 @@ import {Search} from "@element-plus/icons-vue";
   },
   data() {
     return {
-      queryForm:{
-        grade:0,
-        studentClass:0,
-        gender:0
+      editForm: {
+        name: 'Marry',
+        address: 'No. 189, Grove St, Los Angeles',
+        score: 2.3,
+        studentId: 405325666,
+        grade: 3,
+        studentClass: 1,
+        gender: 0
       },
-      studentClassList:{
-        1:"A班",
-        2:"B班",
-        3:"C班"
+      queryForm: {
+        grade: 0,
+        studentClass: 0,
+        gender: 0
       },
-      gradeList:{
-        1:"一年級",
-        2:"二年級",
-        3:"三年級"
+      studentClassList: {
+        1: "A班",
+        2: "B班",
+        3: "C班"
+      },
+      gradeList: {
+        1: "一年級",
+        2: "二年級",
+        3: "三年級"
       },
       tableData: [
         {
@@ -192,39 +231,39 @@ import {Search} from "@element-plus/icons-vue";
           name: 'Jack',
           address: 'No. 189, Grove St, Los Angeles',
           score: 9.8,
-          studentId:405325667,
-          grade:1,
-          studentClass:3
+          studentId: 405325667,
+          grade: 1,
+          studentClass: 3
         },
         {
           date: '2016-05-02',
           name: 'Marry',
           address: 'No. 189, Grove St, Los Angeles',
           score: 2.3,
-          studentId:405325666,
-          grade:3,
-          studentClass:1
+          studentId: 405325666,
+          grade: 3,
+          studentClass: 1
         },
         {
           date: '2016-05-04',
           name: 'Din',
           address: 'No. 189, Grove St, Los Angeles',
           score: 4.5,
-          studentId:405325453,
-          grade:2,
-          studentClass:2
+          studentId: 405325453,
+          grade: 2,
+          studentClass: 2
         },
         {
           date: '2016-05-01',
           name: 'Wng',
           address: 'No. 189, Grove St, Los Angeles',
           score: 6.7,
-          studentId:405325123,
-          grade:1,
-          studentClass:3
+          studentId: 405325123,
+          grade: 1,
+          studentClass: 3
         }],
-      studentName:"",
-      editStudentDialogVisible:true
+      studentName: "",
+      editStudentDialogVisible: false
     }
   },
   components: {
@@ -238,7 +277,11 @@ import {Search} from "@element-plus/icons-vue";
     ElSelect,
     ElOption,
   },
-  methods: {},
+  methods: {
+    close1(){
+      console.log("w")
+    }
+  },
 })
 export default class ManageStudent extends Vue {
 }

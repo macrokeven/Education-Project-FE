@@ -8,7 +8,7 @@
       :value="selectPath"
       @onChange="changePath"
   >
-    <t-menu-item value="HomePage" @click="changePath('HomePage')">
+    <t-menu-item value="Home" @click="changePath('Home.vue')">
       <template #icon>
         <t-icon name="app"/>
       </template>

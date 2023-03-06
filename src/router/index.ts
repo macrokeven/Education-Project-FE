@@ -13,10 +13,10 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import(/* webpackChunkName: "MainLayout" */ '../layouts/MainLayout.vue'),
     children:[
       {
-        path: "/HomePage",
-        name: "HomePage",
+        path: "/Home",
+        name: "Home.vue",
         component: () =>
-            import(/* webpackChunkName: "HomePage" */ "../pages/HomePage.vue"),
+            import(/* webpackChunkName: "HomePage" */ "../pages/Home.vue"),
       },{
         path: "/WebSocketTest",
         name: "WebSocketTest",
