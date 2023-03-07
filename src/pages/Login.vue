@@ -3,7 +3,7 @@
   <img src="./../assets/pics/phone-bg-2.jpg" class="background mobile" alt="">
   <div class="my-container">
     <div class="login-box" ref="myLoginBox">
-      <div class="login-header">澳門教育系統</div>
+      <div class="login-header">乐炬智能教育</div>
       <div class="username-box" style="margin-top: 40px;">
         <input type="text" placeholder="用户名、邮箱、手机号" class="login-input" v-model="userInput">
       </div>

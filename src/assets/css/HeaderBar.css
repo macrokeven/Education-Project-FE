@@ -7,6 +7,7 @@
     width: 100%;
     display: flex;
     flex-direction: row;
+    z-index: 999;
 }
 .head-title{
     color: #F7FAFC;

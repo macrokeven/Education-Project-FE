@@ -10,35 +10,32 @@
   >
     <t-menu-item value="Home" @click="changePath('Home')">
       <template #icon>
-        <t-icon name="app"/>
+        <AppIcon />
       </template>
       首页
     </t-menu-item>
     <t-submenu>
       <template #icon>
-        <t-icon name="user-circle"/>
+        <UserCircleIcon />
       </template>
       <template #title>
         <span>学生中心</span>
       </template>
       <t-menu-item value="ManageStudent" @click="changePath('ManageStudent')"> 管理学生</t-menu-item>
       <t-menu-item value="3-3"> 成绩追踪</t-menu-item>
-      <t-menu-item value="3-4"> 二级菜单内容</t-menu-item>
     </t-submenu>
     <t-submenu value="4">
       <template #icon>
-        <t-icon name="view-module"/>
+        <ViewModuleIcon />
       </template>
       <template #title>
         <span>课程中心</span>
       </template>
-      <t-menu-item value="SimulateCourse" @click="changePath('SimulateCourse')">課程管理</t-menu-item>
-      <t-menu-item value="4-2">課程報告</t-menu-item>
-      <t-menu-item value="4-3"> 二级菜单内容</t-menu-item>
+      <t-menu-item value="ManageCourse" @click="changePath('ManageCourse')">課程管理</t-menu-item>
     </t-submenu>
     <t-submenu value="5">
       <template #icon>
-        <t-icon name="view-module"/>
+        <ViewModuleIcon />
       </template>
       <template #title>
         <span>模擬上課</span>
@@ -49,7 +46,7 @@
     </t-submenu>
     <t-menu-item value="edit1">
       <template #icon>
-        <t-icon name="setting"/>
+        <SettingIcon />
       </template>
       系统设置
     </t-menu-item>
@@ -58,12 +55,16 @@
 
 <script lang="ts">
 import {Options, Vue} from 'vue-class-component';
-import {Icon as tIcon} from 'tdesign-icons-vue-next';
+import {Icon as tIcon,AppIcon,UserCircleIcon,ViewModuleIcon,SettingIcon} from 'tdesign-icons-vue-next';
 import {MenuValue} from 'tdesign-vue-next';
 
 @Options({
   components: {
-    tIcon
+    tIcon,
+    AppIcon,
+    UserCircleIcon,
+    ViewModuleIcon,
+    SettingIcon
   },
   computed: {
     currentPath() {
